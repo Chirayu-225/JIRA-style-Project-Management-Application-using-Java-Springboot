@@ -1,4 +1,4 @@
-# Issue Tracker
+# Project Tracking Management Tool
 
 A full-stack, JIRA-style project management application. Teams create projects, plan work in **sprints**, track **issues** on a drag-and-drop **Kanban board**, discuss them in comments, and see each other's changes **live**, with role-based permissions on every action.
 
