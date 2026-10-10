@@ -1,0 +1,24 @@
+# Render "Blueprint": Render reads this file and creates the API service for you.
+# Dashboard -> New -> Blueprint -> pick this repo.
+services:
+  - type: web
+    name: issue-tracker-api
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /actuator/health
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL          # from Neon, JDBC form: jdbc:postgresql://<host>/<db>?sslmode=require
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true        # Render creates a random secret for you
+      - key: CORS_ALLOWED_ORIGINS  # your Vercel URL(s), e.g. https://issue-tracker-yourname.vercel.app,https://*.vercel.app
+        sync: false
+      - key: SEED_DEMO
+        value: "true"
